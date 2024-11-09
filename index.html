@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body class="container d-flex flex-column align-items-center min-vh-100">
+    <!-- Header Section -->
+    <header class="text-center mb-3">
+      <h1>Langkawi Images</h1>
+      <p>View awesome images of Langkawi's activities</p>
+    </header>
+
+    <!-- Filter Section -->
+    <div
+      class="container filter-btns d-flex flex-column mb-4"
+      style="max-width: 450px"
+    >
+      <div class="row mb-2">
+        <button
+          class="btn btn-outline-primary w-100"
+          onclick="filterGallery('all')"
+        >
+          Show All
+        </button>
+      </div>
+      <div class="d-flex gap-2">
+        <button
+          class="btn btn-outline-secondary flex-fill"
+          onclick="filterGallery('mangrove')"
+        >
+          Mangrove
+        </button>
+        <button
+          class="btn btn-outline-secondary flex-fill"
+          onclick="filterGallery('island-hopping')"
+        >
+          Island Hopping
+        </button>
+        <button
+          class="btn btn-outline-secondary flex-fill"
+          onclick="filterGallery('jet-ski')"
+        >
+          Jet Ski
+        </button>
+        <button
+          class="btn btn-outline-secondary flex-fill"
+          onclick="filterGallery('kayaking')"
+        >
+          Kayaking
+        </button>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="container mt-3 row" id="gallery">
+      <!-- Island Hopping Images -->
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="island-hopping">
+        <img
+          src="img/islandhopping1.jpg"
+          alt="island-hopping-1"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="island-hopping">
+        <img
+          src="img/islandhopping2.jpg"
+          alt="island-hopping-2"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="island-hopping">
+        <img
+          src="img/islandhopping3.jpg"
+          alt="island-hopping-3"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+
+      <!-- Jet Ski Images -->
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="jet-ski">
+        <img
+          src="img/jetski1.jpg"
+          alt="jet-ski-1"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="jet-ski">
+        <img
+          src="img/jetski2.jpg"
+          alt="jet-ski-2"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="jet-ski">
+        <img
+          src="img/jetski3.jpg"
+          alt="jet-ski-3"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+
+      <!-- Mangrove Images -->
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="mangrove">
+        <img
+          src="img/mangrove1.jpg"
+          alt="mangrove-1"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="mangrove">
+        <img
+          src="img/mangrove2.jpg"
+          alt="mangrove-2"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="mangrove">
+        <img
+          src="img/mangrove3.jpg"
+          alt="mangrove-3"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+
+      <!-- Kayaking Images -->
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="kayaking">
+        <img
+          src="img/kayak1.jpg"
+          alt="kayaking-1"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="kayaking">
+        <img
+          src="img/kayak2.jpg"
+          alt="kayaking-2"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-3" data-category="kayaking">
+        <img
+          src="img/kayak3.jpg"
+          alt="kayaking-3"
+          class="img-fluid rounded-4 gallery-img"
+        />
+      </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="close-btn" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-image" src="" alt="Enlarged Image" />
+    </div>
+    <footer class="text-center mt-5">
+      <p>&copy; by Sang Fakir</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM fully loaded and parsed");
+
+        document.querySelectorAll(".gallery-img").forEach((img) => {
+          img.addEventListener("click", function () {
+            console.log("Image clicked, triggering openLightbox");
+            openLightbox(this.src);
+          });
+        });
+      });
+
+      function openLightbox(src) {
+        console.log("Running openLightbox with src:", src);
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+
+        lightboxImage.src = src;
+        lightbox.style.display = "flex";
+      }
+
+      function closeLightbox() {
+        console.log("Running closeLightbox");
+
+        document.getElementById("lightbox").style.display = "none";
+      }
+      function filterGallery(category) {
+        var items = document.querySelectorAll("#gallery .col-12");
+        items.forEach(function (item) {
+          if (
+            category === "all" ||
+            item.getAttribute("data-category") === category
+          ) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
